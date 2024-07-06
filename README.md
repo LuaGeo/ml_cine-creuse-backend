@@ -1,4 +1,4 @@
-# My Flask Backend App
+# Flask Backend App
 
 This README will guide you through the setup and running of the project.
 
@@ -12,7 +12,9 @@ Ensure you have the following software installed on your machine:
 
 - **Python 3.8+**: The programming language used for the project.
 - **pip**: The Python package installer, usually comes with Python but you can install it manually if needed.
-- **virtualenv** (recommended): A tool to create isolated Python environments. You can install it using pip:
+- **virtualenv** (recommended): A tool to create isolated Python environments.
+
+(Note: Check the last section of this document for basic installation instructions)
 
 ## Installation
 
@@ -85,3 +87,54 @@ gunicorn app:app
 ### OBS: Front-End Integration
 
 This backend is designed to be used with the [My Frontend App](https://github.com/LuaGeo/ml_cine-creuse-frontend) which provides the user interface for this project. You will find all informations you need in its README section there.
+
+> ### Basic installation instructions:
+>
+> ### Windows:
+>
+> #### Install Python:
+>
+> - Download the latest version of Python from the [official Python website](https://www.python.org/downloads/).
+> - Run the installer and make sure to check the box "Add Python to PATH".
+>
+> #### Verify Installation:
+>
+> ```bash
+> python --version
+> ```
+>
+> #### Install pip:
+>
+> - pip is included by default with Python 3.4+.
+>
+> #### Verify pip Installation:
+>
+> ```bash
+> pip --version
+> ```
+>
+> ### macOS:
+>
+> #### Install Homebrew (if not already installed):
+>
+> ```bash
+> /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+> ```
+>
+> #### Install Python:
+>
+> ```bash
+> brew install python
+> ```
+>
+> #### Verify Installation:
+>
+> ```bash
+> python3 --version
+> ```
+>
+> #### Verify pip Installation:
+>
+> ```bash
+> pip3 --version
+> ```

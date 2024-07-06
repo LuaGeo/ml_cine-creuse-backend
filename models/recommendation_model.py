@@ -60,7 +60,7 @@ actor_columns = ['actor1', 'actor2', 'actor3', 'actor4', 'actor5', 'actor6', 'ac
 genre_columns = ['genre1', 'genre2']
 
 # Specify the overview columns
-overview_columns = ['overview1', 'overview2']  # Replace with your actual overview columns
+overview_columns = ['overview']
 
 # Process the data in chunks
 link = "https://raw.githubusercontent.com/LuaGeo/test_ml_cine-creuse-backend/main/data/data_cleaned_ml_with_original_columns.parquet"
