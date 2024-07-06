@@ -3,7 +3,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 import numpy as np
 
-link = "/Users/lua/wild/project2/ml_cine-creuse-backend/data/data_cleaned_ml_with_original_columns (2).parquet"
+link = "/data/data_cleaned_ml_with_original_columns (2).parquet"
 df = pd.read_parquet(link)
 
 # df = pd.read_csv('/Users/lua/wild/project2/test_ml_cine-creuse-backend/data/data_cleaned_ml_with_original_columns.csv')
