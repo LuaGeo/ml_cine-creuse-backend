@@ -2,9 +2,16 @@ import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 import numpy as np
+import requests
+import io
 
-link = "https://raw.githubusercontent.com/LuaGeo/ml_cine-creuse-backend/main/data/df_optimized_numeric.parquet"
-df = pd.read_parquet(link)
+url = "https://raw.githubusercontent.com/LuaGeo/ml_cine-creuse-backend/main/data/df_optimized.parquet"
+path = "//Users/lua/wild/project2/ml_cine-creuse-backend/data/df_numeric.parquet"
+
+response = requests.get(url)
+response.raise_for_status()
+
+df = pd.read_parquet(path) #io.BytesIO(response.content)
 
 # df = pd.read_csv('/Users/lua/wild/project2/test_ml_cine-creuse-backend/data/data_cleaned_ml_with_original_columns.csv')
 
@@ -28,7 +35,7 @@ scaler = StandardScaler()
 numeric_features_scaled = scaler.fit_transform(numeric_features)
 
 # Extract overview features (already processed and included in df)
-overview_columns = [col for col in df.columns if col not in ['titleId',  'nconst_director',   'original_actors', 'Director_name',  'production_companies_name'] + actor_columns + genre_columns + list(numeric_features.columns)]
+overview_columns = [col for col in df.columns if col not in ['titleId',  'nconst_director',   'original_actors', 'Director_name',  'production_companies_name', 'title', 'overview', 'main_genre', 'poster_path', 'backdrop_path', 'original_overview'] + actor_columns + genre_columns + list(numeric_features.columns)]
 overview_features = df[overview_columns].values
 
 # Combine all features
@@ -37,4 +44,4 @@ combined_features = np.hstack([numeric_features_scaled, directors_encoded, actor
 # Calculate the cosine similarity matrix
 similarity_matrix = cosine_similarity(combined_features)
 
-sim_matrix_df = pd.DataFrame(similarity_matrix, index=df['title'], columns=df['title'])
+sim_matrix_df = pd.DataFrame(similarity_matrix, index=df['titleId'], columns=df['titleId'])
