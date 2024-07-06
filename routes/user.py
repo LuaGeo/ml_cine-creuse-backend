@@ -30,13 +30,13 @@ def setup_favorite_movies_routes(app):
         response, status = add_favorite_movie(data)
         return jsonify(response), status
 
-    @app.route('/favorites', methods=['GET'])
-    def get_favorites():
-        user_id = request.args.get('userId')
-        favorites = get_favorite_movies(user_id)
-        if 'error' in favorites:
-            return jsonify(favorites), favorites.get('status', 400)
-        return jsonify(favorites)
+    @app.route('/favorites/list/<userId>', methods=['GET'])
+    def get_favorites(userId):
+        if not userId:
+            return jsonify({"error": "Missing userId"}), 400
+        
+        response, status = get_favorite_movies({"userId": userId})
+        return jsonify(response), status
 
     @app.route('/favorites', methods=['DELETE'])
     def delete_favorite():

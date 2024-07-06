@@ -4,4 +4,9 @@ Flask-PyMongo==2.3.0
 gunicorn==22.0.0
 werkzeug==2.2.3
 python-dotenv==1.0.1
+requests==2.26.0
+pandas==1.5.0
+scikit-learn==1.5.0
+pyarrow==11.0.0
+fastparquet==2024.5.0
 

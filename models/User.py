@@ -80,17 +80,18 @@ def add_favorite_movie(data):
     
     return {"message": "Favorite movie added"}, 201
 
-def get_favorite_movies(user_id):
-    if not user_exists(user_id):
-        return {"error": "Invalid userId"}, 404
-    try:
-        user_id_obj = ObjectId(user_id)  # Ensure valid ObjectId
-        user = mongo.db.users.find_one({"_id": user_id_obj}, {"favorite_movies": 1})
-        if not user or 'favorite_movies' not in user:
-            return []
-        return user['favorite_movies']
-    except Exception as e:
-        return {"error": str(e)}, 500
+def get_favorite_movies(data):
+    if 'userId' not in data:
+        return {"error": "Missing userId"}, 400
+
+    user_id_obj = ObjectId(data['userId'])
+
+    user = mongo.db.users.find_one({"_id": user_id_obj}, {"favorite_movies": 1})
+    if user and "favorite_movies" in user:
+        favorite_movies = user["favorite_movies"]
+        return {"favoriteMovies": favorite_movies}, 200
+    else:
+        return {"favoriteMovies": []}, 200
 
 def delete_favorite_movie(data):
     if 'userId' not in data or 'movieId' not in data:

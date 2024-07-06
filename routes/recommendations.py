@@ -11,11 +11,8 @@ def get_movie_details_from_df(row):
         "averageRating": row['averageRating'],
         "runtimeMinutes": row['runtimeMinutes'],
         "startYear": row['startYear'],
-        "numVotes": row['numVotes'],
         "overview": row['original_overview'],
         "main_genre": row['main_genre'],
-        "original_actors": row['original_actors'],
-        "Director_name": row['Director_name'],
         "poster_path": row.get('poster_path'),
         "backdrop_path": row.get('backdrop_path')
     }
