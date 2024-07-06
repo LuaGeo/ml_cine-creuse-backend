@@ -3,7 +3,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 import numpy as np
 
-link = "https://raw.githubusercontent.com/LuaGeo/ml_cine-creuse-backend/main/data/df_optimized.parquet"
+link = "https://raw.githubusercontent.com/LuaGeo/ml_cine-creuse-backend/main/data/df_optimized_numeric.parquet"
 df = pd.read_parquet(link)
 
 # df = pd.read_csv('/Users/lua/wild/project2/test_ml_cine-creuse-backend/data/data_cleaned_ml_with_original_columns.csv')
@@ -28,7 +28,7 @@ scaler = StandardScaler()
 numeric_features_scaled = scaler.fit_transform(numeric_features)
 
 # Extract overview features (already processed and included in df)
-overview_columns = [col for col in df.columns if col not in ['titleId', 'title', 'nconst_director', 'overview', 'main_genre', 'original_actors', 'Director_name', 'poster_path', 'backdrop_path', 'production_companies_name', 'original_overview'] + actor_columns + genre_columns + list(numeric_features.columns)]
+overview_columns = [col for col in df.columns if col not in ['titleId',  'nconst_director',   'original_actors', 'Director_name',  'production_companies_name'] + actor_columns + genre_columns + list(numeric_features.columns)]
 overview_features = df[overview_columns].values
 
 # Combine all features
