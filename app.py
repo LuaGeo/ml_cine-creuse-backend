@@ -5,10 +5,14 @@ from db import get_db
 from dotenv import load_dotenv
 import os
 from flask_cors import CORS
+import logging #added
+
 
 load_dotenv()
 
 app = Flask(__name__)
+logging.basicConfig(level=logging.DEBUG) #added
+
 app.config["MONGO_URI"] = os.getenv("MONGO_URI")
 
 # if __name__ == "__main__":

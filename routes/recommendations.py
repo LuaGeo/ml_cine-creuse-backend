@@ -85,7 +85,8 @@ def setup_recommendations_routes(app):
     def recommendations(title_id):
         if not api_key:
             return jsonify({'error': 'TMDB API key not available'}), 500
-
+            
+        app.logger.debug(f'Recommendations endpoint accessed with title_id: {title_id}')
         recommended_movies = get_recommendations(title_id, sim_matrix_df, df, api_key, 20)
         if recommended_movies is None or not recommended_movies:
             return jsonify({'error': 'Movie title not found or no recommendations available'}), 404
