@@ -5,13 +5,13 @@ import numpy as np
 import requests
 import io
 
-url = "https://raw.githubusercontent.com/LuaGeo/ml_cine-creuse-backend/main/data/df_optimized.parquet"
-path = "//Users/lua/wild/project2/ml_cine-creuse-backend/data/df_numeric.parquet"
+url = "https://raw.githubusercontent.com/LuaGeo/ml_cine-creuse-backend/main/data/df_numeric.parquet"
+path = "/Users/lua/wild/project2/ml_cine-creuse-backend/data/df_numeric.parquet"
 
 response = requests.get(url)
 response.raise_for_status()
 
-df = pd.read_parquet(path) #io.BytesIO(response.content)
+df = pd.read_parquet(io.BytesIO(response.content)) #io.BytesIO(response.content)
 
 # df = pd.read_csv('/Users/lua/wild/project2/test_ml_cine-creuse-backend/data/data_cleaned_ml_with_original_columns.csv')
 

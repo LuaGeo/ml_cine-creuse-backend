@@ -11,6 +11,9 @@ load_dotenv()
 app = Flask(__name__)
 app.config["MONGO_URI"] = os.getenv("MONGO_URI")
 
+# if __name__ == "__main__":
+#     app.run(host='0.0.0.0', port=5000)
+
 CORS(app)
 #CORS(app, resources={r"/api/*": {"origins": os.getenv("FRONTEND_URL")}}, supports_credentials=True)
 CORS(app, resources={r"/api/*": {"origins": "*"}}, supports_credentials=True)
