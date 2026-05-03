@@ -33,3 +33,10 @@ def setup_popular_movies_routes(app):
                 })
 
         return jsonify(popular_movies_list)
+
+    @app.route('/top-movies', methods=['GET'])
+    def get_top_movies():
+        top = df.sort_values(by='averageRating', ascending=False).head(20)
+        return jsonify(top[['titleId', 'averageRating']].to_dict(orient='records'))
+    
+    
