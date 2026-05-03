@@ -18,3 +18,5 @@ test.ipynb
 data/data_cleaned_ml_with_original_columns.parquet
 data/df_optimized.parquet
 data/df_optimized_numeric.parquet
+data/df_slim.parquet
+data/df_numeric.parquet

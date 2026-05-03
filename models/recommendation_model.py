@@ -1,12 +1,10 @@
 import pandas as pd
 import json
 
-path = "./data/df_numeric.parquet"
+path = "./data/df_slim2.parquet"
 lookup_path = "./data/recommendations_lookup.json"
 
-# Juste charger le parquet et le JSON — zéro sklearn au démarrage
 df = pd.read_parquet(path)
-df = df.dropna().reset_index(drop=True)
 
 with open(lookup_path, "r") as f:
     recommendations_lookup = json.load(f)
