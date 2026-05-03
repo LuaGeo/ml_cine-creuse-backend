@@ -1,9 +1,20 @@
+# Environnement
 .env
-venv
-test.ipynb
+venv/
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Python
 __pycache__/
-__pycache__
-*/__pycache__
-**/__pycache__
-**/__pycache__
-**/__init__.py
+**/__pycache__/
+*.pyc
+
+# Notebooks de test
+test.ipynb
+
+# Données inutilisées
+data/data_cleaned_ml_with_original_columns.parquet
+data/df_optimized.parquet
+data/df_optimized_numeric.parquet

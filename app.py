@@ -27,10 +27,12 @@ get_db(app)
 # Import routes
 from routes.user import setup_user_routes, setup_favorite_movies_routes
 from routes.recommendations import setup_recommendations_routes
+from routes.popular_movies import setup_popular_movies_routes
 
 setup_user_routes(app)
 setup_favorite_movies_routes(app)
 setup_recommendations_routes(app)
+setup_popular_movies_routes(app)
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
