@@ -1,4 +1,6 @@
 # precompute_recommendations.py
+# à faire tourner une seule fois pour pré-calculer les recommandations, puis les stocker dans un JSON pour un accès rapide dans l'API
+
 import pandas as pd
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
