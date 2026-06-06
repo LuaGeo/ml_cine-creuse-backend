@@ -11,7 +11,12 @@ import logging #added
 load_dotenv()
 
 app = Flask(__name__)
-logging.basicConfig(level=logging.DEBUG) #added
+logging.basicConfig(level=logging.DEBUG)
+
+# Health check endpoint (pour garder le service Render éveillé)
+@app.route("/health")
+def health():
+    return {"status": "ok"}, 200
 
 app.config["MONGO_URI"] = os.getenv("MONGO_URI")
 
